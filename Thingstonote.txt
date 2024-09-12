@@ -1,0 +1,7 @@
+Things to take note (to avoid such same errors/mistakes):
+
+CICD scripts seems to be copied over from workplace, there this "dso-approval" stage missing
+Incomplete submission, missing terraform resources, architecture diagram as well as the CICD plan stated in the challenge
+Infra IaC is incomplete, underlying resources such as the creation of VPC and subnet are missing
+The code repo does not have a proper structure, infra and app are not separated into their respective folders
+There is no architecture diagram and CICD diagram can be better improved to illustrate the flow of the pipeline

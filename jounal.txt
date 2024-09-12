@@ -1,0 +1,2 @@
+12 Sept 2024:
+learning about redis, creating redis container.
