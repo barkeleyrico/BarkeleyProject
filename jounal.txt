@@ -1,2 +1,4 @@
 12 Sept 2024:
 learning about redis, creating redis container.
+creating simple nodejs app to connect to redis.
+managed to connect to the redis and able to get the current counter
