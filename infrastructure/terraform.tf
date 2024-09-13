@@ -4,19 +4,65 @@ provider "aws" {
   secret_key = "4rk3dGtKu08r/WkzrloSxmk60JMfuMZ00hsRsp+Z"
 }
 
-resource "aws_instance" "example" {
-  ami           = "ami-04a5ce820a419d6da"
-  instance_type = "t2.micro"               # Type of EC2 instance
-
-  # Optionally, add a tag to identify the instance
+#VPC
+resource "aws_vpc" "barkeley" {
+  cidr_block = "10.0.0.0/16"
   tags = {
-    Name = "terraform"
+    Name = "barkeley-vpc"
   }
-
-  # Optional: Configure security group
-  # vpc_security_group_ids = [aws_security_group.example.id]
-
-  # Optional: Configure key pair (for SSH access)
-  # key_name = "your-key-pair-name"  # Change to your key pair name
 }
 
+#IGW
+resource "aws_internet_gateway" "bgw" {
+  vpc_id = aws_vpc.barkeley.id
+  tags = {
+    Name = "bgw"
+  }
+}
+
+#Route Table
+resource "aws_route_table" "route_table" {
+  vpc_id = aws_vpc.barkeley.id
+  tags = {
+    Name = "barkeley-route-table"
+  }
+}
+
+#Route
+resource "aws_route" "public_internet" {
+  route_table_id         = aws_route_table.route_table.id
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id             = aws_internet_gateway.bgw.id
+}
+
+#Public Subnet
+resource "aws_subnet" "public_subnet" {
+  for_each                = { for subnet in var.public_subnets : subnet.az => subnet }
+  vpc_id                  = aws_vpc.barkeley.id
+  cidr_block              = each.value.cidr_block
+  availability_zone       = each.value.az
+  map_public_ip_on_launch = true
+  tags = {
+    Name = "public-subnet-${each.value.az}"
+  }
+}
+
+#Private Subnet
+# resource "aws_subnet" "private_subnets" {
+#   for_each = { for subnet in var.private_subnets : subnet.az => subnet}
+#   vpc_id     = aws_vpc.barkeley.id
+#   cidr_block = each.value.cidr_block
+#   availability_zone = each.value.az
+#   tags = {
+#     Name = "private-subnet-${each.value.az}"
+#   }
+# }
+
+#Route Table Associations
+resource "aws_route_table_association" "subnet_associations" {
+  for_each = aws_subnet.public_subnet
+
+  subnet_id      = each.value.id
+  route_table_id = aws_route_table.route_table.id
+
+}
