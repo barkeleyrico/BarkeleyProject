@@ -19,3 +19,8 @@ managed to create eks cluster and the node, but will destroy everything for now
 will create iam resources also
 
 managed to create aws iams using terraform
+managed to create my k8s infra
+managed do Dockerize the applications
+
+manage to connect to k8s
+created some deployments and services for applications and redis

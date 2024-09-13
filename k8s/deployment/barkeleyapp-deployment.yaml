@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: barkeleyapp-deployment
+  labels:
+    app: barkeley
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: barkeley
+  template:
+    metadata:
+      name: barkeley-pod
+      labels:
+        app: barkeley
+    spec:
+      containers:
+        - name: barkeley
+          image: ricoharsono/barkeley-app:latest
+          imagePullPolicy: Always
