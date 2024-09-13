@@ -15,5 +15,7 @@ learning terraform user need permission to create eks cluster
 having difficulties creating IAM resources using terraform, will create the role manually
 found out the reason why i cannot create iam resources (aws policy called AWSCompromisedKeyQuarantineV3)
 
-managed to crearte eks cluster and the node, but will destroy everything for now
+managed to create eks cluster and the node, but will destroy everything for now
 will create iam resources also
+
+managed to create aws iams using terraform
