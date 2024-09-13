@@ -2,3 +2,10 @@
 learning about redis, creating redis container.
 creating simple nodejs app to connect to redis.
 managed to connect to the redis and able to get the current counter
+
+created new aws account
+created new terraform user and access key
+tried simple ec2 creation instances w terraform key
+
+13 Sept 2024:
+creation of aws underlying resources
