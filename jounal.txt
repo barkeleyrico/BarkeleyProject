@@ -24,3 +24,13 @@ managed do Dockerize the applications
 
 manage to connect to k8s
 created some deployments and services for applications and redis
+
+14 Sept 2024:
+yesterday have some problem attaching sg to the node
+will try to do a launch template on aws_eks_node resource
+failed to use launch template, for now i attached the security group manually
+
+trying to create volumes for the redis so it persist (still figuring it out)
+
+15 Sept 2024:
+learn about gitlab (mirror, webhook cicd)

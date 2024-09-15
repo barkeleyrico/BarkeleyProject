@@ -27,8 +27,9 @@ const getCounter = async () => {
 
     if (value === null) {
       console.log("Initializing counter to 0");
-      await client.set(key, 0);
-      value = 0;
+      await client.set(key, 1);
+      value = 1;
+      return value;
     }
 
     // Increment the counter and display the new value
