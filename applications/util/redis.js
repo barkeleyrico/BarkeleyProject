@@ -3,7 +3,7 @@ const redis = require("redis");
 // Create Redis Client
 const client = redis.createClient({
   socket: {
-    host: "redis-cluster.default.svc.cluster.local", // Use the correct container name
+    host: "redis-cluster.default.svc.cluster.local",
     port: 6379,
   },
 });
