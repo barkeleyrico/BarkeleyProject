@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: redis-pv
+  name: redis-slave-gp2-pv
 spec:
   capacity:
     storage: 10Gi
   accessModes:
     - ReadWriteOnce
+  storageClassName: gp2
   hostPath:
-    path: /mnt/data/redis
-  storageClassName: manual
+    path: /mnt/data # Use appropriate path or adjust for AWS EBS

@@ -44,3 +44,4 @@ now there are 2 nodes on private subnets and i want to put the lb on public subn
 17 Sept 2024:
 after so many tries, i revert back to public subnets
 unable to solve the connection issue when nodes were put on private subnet
+now i want to try to have a master slave redis relation
