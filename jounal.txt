@@ -34,3 +34,13 @@ trying to create volumes for the redis so it persist (still figuring it out)
 
 15 Sept 2024:
 learn about gitlab (mirror, webhook cicd)
+
+16 Sept 2024:
+changing infra, add private subnets, add NAT, deploy the node on private
+create lb service on public subnet
+unable to connect
+now there are 2 nodes on private subnets and i want to put the lb on public subnet, but so far connection failed
+
+17 Sept 2024:
+after so many tries, i revert back to public subnets
+unable to solve the connection issue when nodes were put on private subnet

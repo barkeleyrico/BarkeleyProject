@@ -23,24 +23,27 @@ app.use(express.json());
 const getCounter = async () => {
   try {
     const key = "myCounter";
-    const value = await client.get(key);
+    let value = await client.get(key); // Use let instead of const
 
     if (value === null) {
       console.log("Initializing counter to 0");
       await client.set(key, 1);
-      value = 1;
+      value = 1; // No error here, as value is declared with let
       return value;
     }
 
     // Increment the counter and display the new value
     const newValue = await client.incr(key);
     return newValue;
-    //console.log(`New value of ${key}:`, newValue);
   } catch (err) {
     console.error("Error getting the value from Redis:", err);
     throw err;
   }
 };
+
+app.get("/healthz", (req, res) => {
+  res.status(200).send("OK");
+});
 
 app.get("/", async (req, res) => {
   try {

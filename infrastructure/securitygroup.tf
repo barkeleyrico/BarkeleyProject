@@ -27,6 +27,13 @@ resource "aws_security_group" "eks_node_group_sg" {
     cidr_blocks = ["0.0.0.0/0"] # Restrict to specific IPs or ranges as needed
   }
 
+  ingress {
+    from_port   = 8000
+    to_port     = 8000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"] # Restrict to specific IPs or ranges as needed
+  }
+
   # Allow DNS resolution within the cluster
   egress {
     from_port   = 53
